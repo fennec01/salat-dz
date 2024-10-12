@@ -278,7 +278,7 @@
         const year = now.getFullYear();
         const month = String(now.getMonth() + 1).padStart(2, '0'); // Add 1 because months are 0-indexed
         const day = String(now.getDate()).padStart(2, '0');
-        currentDateElement.textContent = `${year}/${month}/${day}`;
+        currentDateElement.textContent = `${day}/${month}/${year}`;
     }
 
 
