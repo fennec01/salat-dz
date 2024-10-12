@@ -1,7 +1,7 @@
 {
     "name": "Salat DZ",
     "short_name": "Salat",
-    "start_url": "/",
+    "start_url": "/salat-dz",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",
