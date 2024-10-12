@@ -15,25 +15,29 @@
             height: 100%;
             margin: 0;
         }
-        .container {
-            height: 100vh; 
-        }
    
     </style>
 
 </head>
 
 <body>
-        <div class="container d-flex justify-content-center align-items-center flex-column">
+    <nav class="navbar bg-body-tertiary">
+        <form class="container-fluid justify-content-start">
+          <button class="btn btn-primary me-2" type="button">تحميل</button>
+          <div class="form-check form-switch text-center ms-auto">
+            <input class="form-check-input" type="checkbox" id="gmtToggle">
+            <label class="form-check-label" for="gmtToggle">GMT+2</label>
+        </div>
+        </form>
+      </nav>
+
+        <div class="container d-flex align-items-center flex-column" style="margin-top: 10vh;">
        <h1>🕋</h2>
             <h2>مواقيت المسيلة</h2>   
        <h6 id="current-date">----/--/--</h6>
         <h5 id="current-time">--:--:--</h5>    
-    <div class="form-check form-switch text-center mb-3">
-        <input class="form-check-input" type="checkbox" id="gmtToggle">
-        <label class="form-check-label" for="gmtToggle">GMT+2</label>
-    </div>
-            <table class="table table-bordered">
+    
+            <table class="table table-bordered" style="margin-top: 5vh;">
                 <thead>
                     <tr>
                         <th>متبقي</th>
