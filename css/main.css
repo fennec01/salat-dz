@@ -6,3 +6,9 @@ body, html {
     height: 100%;
     margin: 0;
 }
+.bi {
+    width: 1em;
+    height: 1em;
+    vertical-align: -.125em;
+    fill: currentcolor;
+}
