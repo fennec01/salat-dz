@@ -140,19 +140,28 @@ setInterval(updateCurrentTimeAndDate, 1000);
 // Event listener to regenerate the table when GMT+1 toggle is activated/deactivated
 gmtToggle.addEventListener("change", generateTableRows);
 
+//check pwa is installed
+window.addEventListener("appinstalled", () => {
+    disableInAppInstallPrompt();
+  });
+  
+function disableInAppInstallPrompt() {
+downloadPwaButton.setAttribute("hidden", "");
+}
+
 //pwa install prompt
 let deferredPrompt;
 window.addEventListener("beforeinstallprompt", (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    // Optionally, show the install button
-    downloadPwaButton.style.display = "block";
+    downloadPwaButton.removeAttribute("hidden");
 });
 
 downloadPwaButton.addEventListener("click", () => {
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then((choiceResult) => {
         if (choiceResult.outcome === "accepted") {
+            downloadPwaButton.setAttribute("hidden", "");
             console.log("User accepted the install prompt");
         } else {
             console.log("User dismissed the install prompt");
