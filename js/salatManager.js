@@ -68,6 +68,9 @@ function adjustTimeForGMT(timeString) {
 // Function to start the countdown timer
 function startCountdown(timeCell, timeLeftCell) {
     const targetTime = getTargetTime(timeCell.textContent);
+    // Set the interval to update every second
+    const intervalId = setInterval(updateCountdown, 1000);
+    updateCountdown();
 
     // Function to update the countdown
     function updateCountdown() {
@@ -89,12 +92,6 @@ function startCountdown(timeCell, timeLeftCell) {
             minutes
         ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
     }
-
-    // Call the update function immediately
-    updateCountdown();
-
-    // Set the interval to update every second
-    const intervalId = setInterval(updateCountdown, 1000);
 }
 
 // Function to get the target time (timeCell) as a Date object for today
