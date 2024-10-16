@@ -2,6 +2,8 @@ import { data } from './data.js';
 
 const today = getCurrentDate();
 const todayTimes = data[today];
+const tomorrow =  getCurrentDate(true);
+const tomorrowFajrTime = data[tomorrow][0];
 const prayerNames = ["الفجر", "الظهر", "العصر", "المغرب", "العشاء"];
 const tableBody = document.getElementById("table-body");
 const gmtToggle = document.getElementById("gmtToggle");
@@ -10,8 +12,9 @@ const currentTimeElement = document.getElementById("current-time");
 const currentDateElement = document.getElementById("current-date");
 
 
-function getCurrentDate() {
+function getCurrentDate(isTommorow) {
     const today = new Date();
+    if(isTommorow) today.setDate(today.getDate() + 1);
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, "0"); // Add leading zero
     const day = String(today.getDate()).padStart(2, "0"); // Add leading zero
@@ -129,13 +132,17 @@ function updateCurrentTimeAndDate() {
 
 // Call the function to generate the rows
 generateTableRows();
+setTomorrowFajr();
 
 // Update current time and date every second
 updateCurrentTimeAndDate();
 setInterval(updateCurrentTimeAndDate, 1000);
 
 // Event listener to regenerate the table when GMT+1 toggle is activated/deactivated
-gmtToggle.addEventListener("change", generateTableRows);
+gmtToggle.addEventListener("change", ()=>{
+    generateTableRows();
+    setTomorrowFajr();
+});
 
 //check pwa is installed
 window.addEventListener("appinstalled", () => {
@@ -144,6 +151,11 @@ window.addEventListener("appinstalled", () => {
   
 function disableInAppInstallPrompt() {
 downloadPwaButton.setAttribute("hidden", "");
+}
+
+function setTomorrowFajr(){
+    const tomorrowFajrElement = document.getElementById("tommorow-fajr-date");
+    tomorrowFajrElement.textContent = adjustTimeForGMT(tomorrowFajrTime);
 }
 
 //pwa install prompt
