@@ -51,6 +51,20 @@ function generateTableRows() {
         // Start countdown for this row
         startCountdown(timeCell, timeLeftCell);
     }
+    //Add next fajr
+    const row = document.createElement("tr");
+    row.className = "table-active";
+    const timeLeftCell = document.createElement("td");
+    timeLeftCell.textContent = "--:--:--"; // Static value
+    row.appendChild(timeLeftCell);
+    const timeCell = document.createElement("td");
+    timeCell.textContent = adjustTimeForGMT(tomorrowFajrTime);
+    row.appendChild(timeCell);
+    const prayerCell = document.createElement("td");
+    prayerCell.textContent = "فجر الغد";
+    row.appendChild(prayerCell);
+    tableBody.appendChild(row);
+    //startCountdown(timeCell, timeLeftCell);
 }
 
 // Function to adjust time for GMT+1 if toggle is active
@@ -138,7 +152,6 @@ const formattedHijriDate = new Intl.DateTimeFormat('ar-DZ-u-ca-islamic', {day: '
 
 // Call the function to generate the rows
 generateTableRows();
-setTomorrowFajr();
 
 // Update current time and date every second
 updateCurrentTimeAndDate();
@@ -147,7 +160,6 @@ setInterval(updateCurrentTimeAndDate, 1000);
 // Event listener to regenerate the table when GMT+1 toggle is activated/deactivated
 gmtToggle.addEventListener("change", ()=>{
     generateTableRows();
-    setTomorrowFajr();
 });
 
 //check pwa is installed
@@ -157,11 +169,6 @@ window.addEventListener("appinstalled", () => {
   
 function disableInAppInstallPrompt() {
 downloadPwaButton.setAttribute("hidden", "");
-}
-
-function setTomorrowFajr(){
-    const tomorrowFajrElement = document.getElementById("tommorow-fajr-date");
-    tomorrowFajrElement.textContent = adjustTimeForGMT(tomorrowFajrTime);
 }
 
 //pwa install prompt
