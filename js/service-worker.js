@@ -2,14 +2,14 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox
 
 // Precache HTML files
 workbox.precaching.precacheAndRoute([
-  { url: '/index.html', revision: '2' },
+  { url: '/index.html', revision: '3' },
   // Add other HTML files as needed
 ]);
 
-// Handle navigation requests
+// Handle navigation requests (HTML)
 workbox.routing.registerRoute(
   ({ request }) => request.mode === 'navigate',
-  new workbox.strategies.NetworkFirst({
+  new workbox.strategies.StaleWhileRevalidate({
     cacheName: 'html-cache',
     plugins: [
       new workbox.expiration.ExpirationPlugin({
@@ -35,15 +35,28 @@ workbox.routing.registerRoute(
 // Cache scripts
 workbox.routing.registerRoute(
   ({ request }) => request.destination === 'script',
-  new workbox.strategies.NetworkFirst({
+  new workbox.strategies.StaleWhileRevalidate({
     cacheName: 'scripts-cache',
   })
 );
 
-// Cache stylesheets (optional)
+// Cache stylesheets
 workbox.routing.registerRoute(
   ({ request }) => request.destination === 'style',
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: 'styles-cache',
+  })
+);
+
+// Cache other assets like fonts or other files
+workbox.routing.registerRoute(
+  ({ request }) => request.destination === 'font' || request.destination === 'document',
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: 'assets-cache',
+    plugins: [
+      new workbox.expiration.ExpirationPlugin({
+        maxEntries: 20,
+      }),
+    ],
   })
 );
