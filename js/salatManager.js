@@ -10,6 +10,7 @@ const gmtToggle = document.getElementById("gmtToggle");
 const downloadPwaButton = document.getElementById("downloadPwaButton");
 const currentTimeElement = document.getElementById("current-time");
 const currentDateElement = document.getElementById("current-date");
+const currentHijriDateElement = document.getElementById("current-hijri-date");
 
 
 function getCurrentDate(isTommorow) {
@@ -123,11 +124,32 @@ function updateCurrentTimeAndDate() {
     const seconds = String(now.getSeconds()).padStart(2, "0");
     currentTimeElement.textContent = `${hours}:${minutes}:${seconds}`;
 
-    // Format the current date as YYYY/MM/DD
+    // Format the current date 
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, "0"); // Add 1 because months are 0-indexed
     const day = String(now.getDate()).padStart(2, "0");
     currentDateElement.textContent = `${day}/${month}/${year}`;
+
+
+// Create formatter for Hijri date in Arabic (full month name, numeric day, and year)
+const hijriDateFormatter = new Intl.DateTimeFormat('ar-TN-u-ca-islamic', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+});
+
+// Format the date components separately
+const parts = hijriDateFormatter.formatToParts(now);
+
+// Extract day, month, and year
+const hijriDay = parts.find(part => part.type === 'day').value;
+const hijriMonth = parts.find(part => part.type === 'month').value;
+const hijriYear = parts.find(part => part.type === 'year').value;
+
+// Combine into desired format dd/full month name/yyyy
+const formattedHijriDate = `ـ${hijriDay}/${hijriMonth}/${hijriYear}هـ`;
+
+    currentHijriDateElement.textContent = formattedHijriDate;
 }
 
 // Call the function to generate the rows
