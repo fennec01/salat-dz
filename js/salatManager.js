@@ -131,24 +131,8 @@ function updateCurrentTimeAndDate() {
     currentDateElement.textContent = `${day}/${month}/${year}`;
 
 
-// Create formatter for Hijri date in Arabic (full month name, numeric day, and year)
-const hijriDateFormatter = new Intl.DateTimeFormat('ar-TN-u-ca-islamic', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
-});
-
-// Format the date components separately
-const parts = hijriDateFormatter.formatToParts(now);
-
-// Extract day, month, and year
-const hijriDay = parts.find(part => part.type === 'day').value;
-const hijriMonth = parts.find(part => part.type === 'month').value;
-const hijriYear = parts.find(part => part.type === 'year').value;
-
-// Combine into desired format dd/full month name/yyyy
-const formattedHijriDate = `ـ${hijriDay}/${hijriMonth}/${hijriYear}هـ`;
-
+//  Hijri dater DZ
+const formattedHijriDate = new Intl.DateTimeFormat('ar-DZ-u-ca-islamic', {day: 'numeric', month: 'long',weekday: 'long',year : 'numeric'}).format(Date.now());
     currentHijriDateElement.textContent = formattedHijriDate;
 }
 
