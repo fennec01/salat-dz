@@ -1,23 +1,15 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js');
 
-// Precache HTML files
+// Precache index.html
 workbox.precaching.precacheAndRoute([
-  { url: '/index.html', revision: '3' },
-  // Add other HTML files as needed
+  { url: '/index.html', revision: '4' },
+  // Add other assets as needed
 ]);
 
-// Handle navigation requests (HTML)
-workbox.routing.registerRoute(
-  ({ request }) => request.mode === 'navigate',
-  new workbox.strategies.StaleWhileRevalidate({
-    cacheName: 'html-cache',
-    plugins: [
-      new workbox.expiration.ExpirationPlugin({
-        maxEntries: 10,
-      }),
-    ],
-  })
-);
+// Serve index.html for all navigation requests
+const handler = workbox.precaching.createHandlerBoundToURL('/index.html');
+const navigationRoute = new workbox.routing.NavigationRoute(handler);
+workbox.routing.registerRoute(navigationRoute);
 
 // Cache images
 workbox.routing.registerRoute(
@@ -26,7 +18,7 @@ workbox.routing.registerRoute(
     cacheName: 'images-cache',
     plugins: [
       new workbox.expiration.ExpirationPlugin({
-        maxEntries: 50
+        maxEntries: 50,
       }),
     ],
   })
@@ -48,9 +40,10 @@ workbox.routing.registerRoute(
   })
 );
 
-// Cache other assets like fonts or other files
+// Cache other assets like fonts
 workbox.routing.registerRoute(
-  ({ request }) => request.destination === 'font' || request.destination === 'document',
+  ({ request }) =>
+    request.destination === 'font' || request.destination === 'document',
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: 'assets-cache',
     plugins: [
