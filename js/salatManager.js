@@ -8,7 +8,6 @@ const prayerNames = ["الفجر", "الظهر", "العصر", "المغرب", "
 const tableBody = document.getElementById("table-body");
 const gmtToggle = document.getElementById("gmtToggle");
 const downloadPwaButton = document.getElementById("downloadPwaButton");
-const currentTimeElement = document.getElementById("current-time");
 const currentDateElement = document.getElementById("current-date");
 const currentHijriDateElement = document.getElementById("current-hijri-date");
 
@@ -128,16 +127,9 @@ function getTargetTime(timeString) {
     return targetTime;
 }
 
-// Function to update current time and date
+// Function to update current date
 function updateCurrentTimeAndDate() {
     const now = new Date();
-
-    // Format the current time as hh:mm:ss
-    const hours = String(now.getHours()).padStart(2, "0");
-    const minutes = String(now.getMinutes()).padStart(2, "0");
-    const seconds = String(now.getSeconds()).padStart(2, "0");
-    currentTimeElement.textContent = `${hours}:${minutes}:${seconds}`;
-
     // Format the current date 
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, "0"); // Add 1 because months are 0-indexed
