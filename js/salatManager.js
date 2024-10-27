@@ -5,11 +5,10 @@ const todayTimes = data[today];
 const tomorrow =  getCurrentDate(true);
 const tomorrowFajrTime = data[tomorrow][0];
 const prayerNames = ["الفجر", "الظهر", "العصر", "المغرب", "العشاء"];
-const tableBody = document.getElementById("table-body");
+const tableBody = document.getElementById("tableBody");
 const downloadPwaButton = document.getElementById("downloadPwaButton");
 const currentDateElement = document.getElementById("current-date");
 const currentHijriDateElement = document.getElementById("current-hijri-date");
-
 
 function getCurrentDate(isTommorow) {
     const today = new Date();
@@ -18,6 +17,20 @@ function getCurrentDate(isTommorow) {
     const month = String(today.getMonth() + 1).padStart(2, "0"); // Add leading zero
     const day = String(today.getDate()).padStart(2, "0"); // Add leading zero
     return `${year}/${month}/${day}`;
+}
+
+function convertTo12Hour(time24) {
+    // Split the input into hours and minutes
+    let [hours, minutes] = time24.split(':').map(Number);
+    
+    // Determine AM or PM
+    const period = hours >= 12 ? 'PM' : 'AM';
+    
+    // Convert hours from 24-hour to 12-hour format
+    hours = hours % 12 || 12; // Adjust 0 or 12 to 12-hour format
+    
+    // Format the result with leading zeros for hours and minutes if needed
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')} ${period}`;
 }
 
 // Function to generate rows dynamically
@@ -35,8 +48,15 @@ function generateTableRows() {
 
         // Create a new cell for the time from the array
         const timeCell = document.createElement("td");
+        timeCell.classList = "h-24";
         timeCell.textContent = todayTimes[i];
         row.appendChild(timeCell);
+
+        // Create a new cell for the time from the array
+        const h12FromatCell = document.createElement("td");
+        h12FromatCell.classList = "h-12";
+        h12FromatCell.textContent =  convertTo12Hour(todayTimes[i]);
+        row.appendChild(h12FromatCell);
 
         // Create a new cell for the prayer name
         const prayerCell = document.createElement("td");
@@ -56,13 +76,17 @@ function generateTableRows() {
     timeLeftCell.textContent = "--:--:--"; // Static value
     row.appendChild(timeLeftCell);
     const timeCell = document.createElement("td");
+    timeCell.classList = "h-24";
     timeCell.textContent = tomorrowFajrTime;
     row.appendChild(timeCell);
+    const h12timeCell = document.createElement("td");
+    h12timeCell.classList = "h-12";
+    h12timeCell.textContent = convertTo12Hour(tomorrowFajrTime);
+    row.appendChild(h12timeCell);
     const prayerCell = document.createElement("td");
     prayerCell.textContent = "فجر الغد";
     row.appendChild(prayerCell);
     tableBody.appendChild(row);
-    //startCountdown(timeCell, timeLeftCell);
 }
 
 // Function to start the countdown timer

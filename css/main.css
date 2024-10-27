@@ -12,3 +12,10 @@ body, html {
     vertical-align: -.125em;
     fill: currentcolor;
 }
+#tableBody.h-24-system .h-12{
+    display: none;
+}
+
+#tableBody.h-12-system .h-24{
+    display: none;
+}
