@@ -6,7 +6,6 @@ const tomorrow =  getCurrentDate(true);
 const tomorrowFajrTime = data[tomorrow][0];
 const prayerNames = ["الفجر", "الظهر", "العصر", "المغرب", "العشاء"];
 const tableBody = document.getElementById("table-body");
-const gmtToggle = document.getElementById("gmtToggle");
 const downloadPwaButton = document.getElementById("downloadPwaButton");
 const currentDateElement = document.getElementById("current-date");
 const currentHijriDateElement = document.getElementById("current-hijri-date");
@@ -36,7 +35,7 @@ function generateTableRows() {
 
         // Create a new cell for the time from the array
         const timeCell = document.createElement("td");
-        timeCell.textContent = adjustTimeForGMT(todayTimes[i]);
+        timeCell.textContent = todayTimes[i];
         row.appendChild(timeCell);
 
         // Create a new cell for the prayer name
@@ -57,29 +56,13 @@ function generateTableRows() {
     timeLeftCell.textContent = "--:--:--"; // Static value
     row.appendChild(timeLeftCell);
     const timeCell = document.createElement("td");
-    timeCell.textContent = adjustTimeForGMT(tomorrowFajrTime);
+    timeCell.textContent = tomorrowFajrTime;
     row.appendChild(timeCell);
     const prayerCell = document.createElement("td");
     prayerCell.textContent = "فجر الغد";
     row.appendChild(prayerCell);
     tableBody.appendChild(row);
     //startCountdown(timeCell, timeLeftCell);
-}
-
-// Function to adjust time for GMT+1 if toggle is active
-function adjustTimeForGMT(timeString) {
-    const [hours, minutes] = timeString.split(":").map(Number);
-    let adjustedHours = hours;
-
-    // Check if GMT+1 is active
-    if (gmtToggle.checked) {
-        adjustedHours = (hours + 1) % 24; // Add 1 hour, wrap around if >= 24
-    }
-
-    return `${String(adjustedHours).padStart(2, "0")}:${String(minutes).padStart(
-        2,
-        "0"
-    )}`;
 }
 
 // Function to start the countdown timer
@@ -148,11 +131,6 @@ generateTableRows();
 // Update current time and date every second
 updateCurrentTimeAndDate();
 setInterval(updateCurrentTimeAndDate, 1000);
-
-// Event listener to regenerate the table when GMT+1 toggle is activated/deactivated
-gmtToggle.addEventListener("change", ()=>{
-    generateTableRows();
-});
 
 //check pwa is installed
 window.addEventListener("appinstalled", () => {
