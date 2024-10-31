@@ -178,6 +178,8 @@ generateTableRows();
 updateCurrentTimeAndDate();
 setInterval(updateCurrentTimeAndDate, 1000);
 
+reloadAtMidnight();
+
 //check pwa is installed
 window.addEventListener("appinstalled", () => {
     disableInAppInstallPrompt();
@@ -207,3 +209,17 @@ downloadPwaButton.addEventListener("click", () => {
         deferredPrompt = null;
     });
 });
+
+function reloadAtMidnight() {
+    debugger;
+    const now = new Date();   
+    // Calculate time remaining until midnight
+    const nextMidnight = new Date();
+    nextMidnight.setHours(24, 0, 0, 0);
+  
+    const timeUntilMidnight = nextMidnight - now;
+
+    setTimeout(() => {
+      location.reload();
+    }, timeUntilMidnight);
+  }
