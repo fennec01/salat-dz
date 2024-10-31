@@ -9,6 +9,7 @@ const tableBody = document.getElementById("tableBody");
 const downloadPwaButton = document.getElementById("downloadPwaButton");
 const currentDateElement = document.getElementById("current-date");
 const currentHijriDateElement = document.getElementById("current-hijri-date");
+let currentHighlitedPrayerElement = null;
 
 function getCurrentDate(isTommorow) {
     const today = new Date();
@@ -99,16 +100,26 @@ function startCountdown(timeCell, timeLeftCell, row) {
     // Function to update the countdown
     function updateCountdown() {
         const currentTime = new Date();
+        //currentTime.setHours(currentTime.getHours() - 9);
+        //currentTime.setMinutes(currentTime.getMinutes() + 51);
         const timeDiff = targetTime - currentTime;
 
         if (timeDiff <= 0) {
             clearInterval(intervalId); // Stop the timer when time is up
             timeLeftCell.textContent = "00:00:00";
             removeRowHighlight(row);
+
+            if(currentHighlitedPrayerElement === row){
+                currentHighlitedPrayerElement = null;
+            }
             return;
         }
 
-        addRowHighlight(row);
+        //highlight next prayer
+        if(!currentHighlitedPrayerElement){
+            currentHighlitedPrayerElement = row;
+            addRowHighlight(row);
+        }
 
         const hours = Math.floor(timeDiff / 1000 / 60 / 60);
         const minutes = Math.floor((timeDiff / 1000 / 60) % 60);
