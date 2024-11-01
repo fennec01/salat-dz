@@ -211,7 +211,6 @@ downloadPwaButton.addEventListener("click", () => {
 });
 
 function reloadAtMidnight() {
-    debugger;
     const now = new Date();   
     // Calculate time remaining until midnight
     const nextMidnight = new Date();
