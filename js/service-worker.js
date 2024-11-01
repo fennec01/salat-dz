@@ -2,7 +2,7 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox
 
 // Precache index.html
 workbox.precaching.precacheAndRoute([
-  { url: '/salat-dz/index.html', revision: '9' },
+  { url: './index.html', revision: '9' },
   // Add other assets as needed
 ]);
 
@@ -20,7 +20,8 @@ const handler = async ({ event }) => {
     }).handle({ event });
   } catch (error) {
     // If network fails, fallback to cache
-    return caches.match('/index.html');
+    console.log("no network, using cached index...");
+    return caches.match('./index.html');
   }
 };
 const navigationRoute = new workbox.routing.NavigationRoute(handler);
