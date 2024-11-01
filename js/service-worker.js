@@ -2,7 +2,7 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox
 
 // Precache index.html
 workbox.precaching.precacheAndRoute([
-  { url: './index.html', revision: '9' },
+  { url: '../index.html', revision: '10' },
   // Add other assets as needed
 ]);
 
@@ -21,7 +21,7 @@ const handler = async ({ event }) => {
   } catch (error) {
     // If network fails, fallback to cache
     console.log("no network, using cached index...");
-    return caches.match('./index.html');
+    return caches.match('../index.html');
   }
 };
 const navigationRoute = new workbox.routing.NavigationRoute(handler);
