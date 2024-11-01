@@ -6,8 +6,23 @@ workbox.precaching.precacheAndRoute([
   // Add other assets as needed
 ]);
 
-// Serve index.html for all navigation requests
-const handler = workbox.precaching.createHandlerBoundToURL('/index.html');
+// Serve index.html for all navigation requests with NetworkFirst strategy
+const handler = async ({ event }) => {
+  try {
+    // Try network first
+    return await workbox.strategies.networkFirst({
+      cacheName: 'pages-cache',
+      plugins: [
+        new workbox.expiration.ExpirationPlugin({
+          maxEntries: 10
+        }),
+      ],
+    }).handle({ event });
+  } catch (error) {
+    // If network fails, fallback to cache
+    return caches.match('/index.html');
+  }
+};
 const navigationRoute = new workbox.routing.NavigationRoute(handler);
 workbox.routing.registerRoute(navigationRoute);
 
