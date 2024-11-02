@@ -9,6 +9,7 @@ const tableBody = document.getElementById("tableBody");
 const downloadPwaButton = document.getElementById("downloadPwaButton");
 const currentDateElement = document.getElementById("current-date");
 const currentHijriDateElement = document.getElementById("current-hijri-date");
+const noTimePlaceholder = "--:--:--";
 let currentHighlitedPrayerElement = null;
 
 function getCurrentDate(isTommorow) {
@@ -44,7 +45,7 @@ function generateTableRows() {
 
         // Create a new cell for "Time Left"
         const timeLeftCell = document.createElement("td");
-        timeLeftCell.textContent = "--:--:--"; // Static value
+        timeLeftCell.textContent = noTimePlaceholder; // Static value
         row.appendChild(timeLeftCell);
 
         // Create a new cell for the time from the array
@@ -100,13 +101,11 @@ function startCountdown(timeCell, timeLeftCell, row) {
     // Function to update the countdown
     function updateCountdown() {
         const currentTime = new Date();
-        //currentTime.setHours(currentTime.getHours() - 9);
-        //currentTime.setMinutes(currentTime.getMinutes() + 51);
         const timeDiff = targetTime - currentTime;
 
         if (timeDiff <= 0) {
             clearInterval(intervalId); // Stop the timer when time is up
-            timeLeftCell.textContent = "00:00:00";
+            timeLeftCell.textContent = noTimePlaceholder;
             removeRowHighlight(row);
 
             if(currentHighlitedPrayerElement === row){
