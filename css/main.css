@@ -35,3 +35,42 @@ tr:hover .time-left-placeholder{
 tr:hover .time-left{
     display: table-cell;
 }
+
+.corner {
+    position: absolute;
+    opacity: 0.25;    
+}
+
+.top-left {
+    top: 0;
+    left: 0;
+    transform: rotate(180deg);
+    margin-top: 55px;
+}
+
+.top-right {
+    top: 0;
+    right: 0;
+    transform: rotate(270deg);
+    margin-top: 55px;
+}
+
+.bottom-left {
+    bottom: 0;
+    left: 0;
+    transform: rotate(90deg);
+}
+
+.bottom-right {
+    bottom: 0;
+    right: 0;
+    transform: rotate(0deg);
+}
+
+html[data-bs-theme="dark"] .corner img {
+    filter: brightness(0) invert(1);
+}
+
+html[data-bs-theme="dark"] .corner {
+    opacity: 0.10;    
+}
