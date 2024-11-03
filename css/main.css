@@ -19,3 +19,19 @@ body, html {
 #tableBody.h-12-system .h-24{
     display: none;
 }
+
+tr.table-primary .time-left-placeholder{
+    display: none;
+}
+
+tr:not(.table-primary) .time-left{
+    display: none;
+}
+
+tr:hover .time-left-placeholder{
+    display: none;
+}
+
+tr:hover .time-left{
+    display: table-cell;
+}

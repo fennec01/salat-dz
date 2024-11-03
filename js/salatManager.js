@@ -45,8 +45,15 @@ function generateTableRows() {
 
         // Create a new cell for "Time Left"
         const timeLeftCell = document.createElement("td");
+        timeLeftCell.classList = "time-left";
         timeLeftCell.textContent = noTimePlaceholder; // Static value
         row.appendChild(timeLeftCell);
+
+        // Create a new cell for "Time Left placeholder"
+        const timeLeftPlaceholderCell = document.createElement("td");
+        timeLeftPlaceholderCell.classList = "time-left-placeholder";
+        timeLeftPlaceholderCell.textContent = noTimePlaceholder; 
+        row.appendChild(timeLeftPlaceholderCell);
 
         // Create a new cell for the time from the array
         const timeCell = document.createElement("td");
