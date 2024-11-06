@@ -1,5 +1,8 @@
 import { data } from './data.js';
 
+export function salatManager() {
+
+    
 const today = getCurrentDate();
 const todayTimes = data[today];
 const tomorrow =  getCurrentDate(true);
@@ -228,3 +231,5 @@ function reloadAtMidnight() {
       location.reload();
     }, timeUntilMidnight);
   }
+
+}

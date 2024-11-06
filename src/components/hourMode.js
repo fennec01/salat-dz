@@ -1,4 +1,6 @@
-const amPmToggle = document.getElementById("amPmToggle");
+export function hourMode() {
+
+    const amPmToggle = document.getElementById("amPmToggle");
 const tableBody = document.getElementById("tableBody");
 
 // Function to update the class based on the toggle state
@@ -27,4 +29,6 @@ window.addEventListener("DOMContentLoaded", () => {
         amPmToggle.checked = false;
         updateClassBasedOnToggle(false);
     }
-});
+});  
+}
+

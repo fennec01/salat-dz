@@ -1,5 +1,5 @@
-(() => {
-    'use strict'
+
+export function darkMode() {
   
     const getStoredTheme = () => localStorage.getItem('theme')
     const setStoredTheme = theme => localStorage.setItem('theme', theme)
@@ -71,5 +71,5 @@
           })
         })
     })
-  })()
+  }
   
