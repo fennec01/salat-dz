@@ -20,6 +20,7 @@ export default defineConfig({
       includeAssets: ['favicon.svg'],
       injectRegister: false,
       injectManifest: {
+        globPatterns: ['**/*.{js,css,html,png,svg}'], //ensure Workbox hashes the files automatically and includes revision information
         minify: false,
         enableWorkboxModulesLogs: true,
       },
@@ -49,7 +50,7 @@ export default defineConfig({
       devOptions: {
         enabled: true,
         /* when using generateSW the PWA plugin will switch to classic */
-        navigateFallback: './src/index.html',
+        navigateFallback: 'index.html',
         suppressWarnings: true,
         type: 'module',
       },
