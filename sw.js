@@ -2168,7 +2168,7 @@ class NavigationRoute extends Route {
     return false;
   }
 }
-precacheAndRoute([{"revision":null,"url":"assets/index-BNPC9IhO.js"},{"revision":null,"url":"assets/index-D6hhSXJW.css"},{"revision":null,"url":"assets/workbox-window.prod.es5-B9K5rw8f.js"},{"revision":"4a35eb246138865a7a2f4da3d566b118","url":"corner.svg"},{"revision":"2ac3da060c2cb53e64ae0d2876142fab","url":"index.html"},{"revision":"8602f487b7950a9d2fad8a734689dde9","url":"pwa-192x192.png"},{"revision":"2d21a7ac96627a54bc341e6b04028005","url":"pwa-512x512.png"},{"revision":"8602f487b7950a9d2fad8a734689dde9","url":"pwa-192x192.png"},{"revision":"2d21a7ac96627a54bc341e6b04028005","url":"pwa-512x512.png"},{"revision":"d3c7d1dec2daa9f50e240376642588ab","url":"manifest.webmanifest"}]);
+precacheAndRoute([{"revision":null,"url":"assets/index-Bam6Z9iN.js"},{"revision":null,"url":"assets/index-D6hhSXJW.css"},{"revision":null,"url":"assets/workbox-window.prod.es5-B9K5rw8f.js"},{"revision":"4a35eb246138865a7a2f4da3d566b118","url":"corner.svg"},{"revision":"6a36ba387f67e4f1decee222c23c2cc2","url":"index.html"},{"revision":"8602f487b7950a9d2fad8a734689dde9","url":"pwa-192x192.png"},{"revision":"2d21a7ac96627a54bc341e6b04028005","url":"pwa-512x512.png"},{"revision":"8602f487b7950a9d2fad8a734689dde9","url":"pwa-192x192.png"},{"revision":"2d21a7ac96627a54bc341e6b04028005","url":"pwa-512x512.png"},{"revision":"d3c7d1dec2daa9f50e240376642588ab","url":"manifest.webmanifest"}]);
 cleanupOutdatedCaches();
 let allowlist;
 registerRoute(new NavigationRoute(
