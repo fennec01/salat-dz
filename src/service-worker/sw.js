@@ -16,7 +16,7 @@ if (import.meta.env.DEV)
 
 // to allow work offline
 registerRoute(new NavigationRoute(
-  createHandlerBoundToURL('/index.html'),
+  createHandlerBoundToURL(import.meta.env.DEV ? '/index.html' : '/salat-dz/index.html'),  // Conditional URL based on environment
   { allowlist },
 ))
 

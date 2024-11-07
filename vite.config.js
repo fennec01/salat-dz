@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
-export default defineConfig({
-  mode: 'development',
+export default defineConfig(({ mode }) =>({
+  mode: mode,
+  base: mode === 'development' ? '/' : '/salat-dz/',  // <-- Set the correct base path for GitHub Pages deployment
   logLevel: 'info',
   define: {
     __DATE__: `'${new Date().toISOString()}'`,
@@ -12,8 +13,8 @@ export default defineConfig({
   },
   plugins: [
     VitePWA({
-      mode: 'development',
-      base: '/',
+      mode: mode,
+      base: mode === 'development' ? '/' : '/salat-dz/',
       strategies: 'injectManifest',
       srcDir: './src/service-worker',
       filename: 'sw.js',
@@ -28,6 +29,8 @@ export default defineConfig({
         short_name: 'Salat',
         theme_color: '#000000',
         background_color: '#000000',
+        start_url: '/salat-dz/',  // Set start_url correctly for GitHub Pages
+        scope: '/salat-dz/',      // Define the scope to match your base
         icons: [
           {
             src: 'pwa-192x192.png', // <== don't add slash, for testing
@@ -56,4 +59,4 @@ export default defineConfig({
       },
     }),
   ],
-})
+}));
