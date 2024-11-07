@@ -2169,7 +2169,7 @@ class NavigationRoute extends Route {
   }
 }
 precacheAndRoute([
-  { url: "/index.html", revision: null },
+  { url: "/salat-dz/index.html", revision: null },
   // Ensure that index.html is cached
   ...[{"revision":null,"url":"assets/index-CSDcA-d3.js"},{"revision":null,"url":"assets/index-D6hhSXJW.css"},{"revision":null,"url":"assets/workbox-window.prod.es5-B9K5rw8f.js"},{"revision":"4a35eb246138865a7a2f4da3d566b118","url":"corner.svg"},{"revision":"72c79c83f60678584c0eb6f590961e75","url":"index.html"},{"revision":"8602f487b7950a9d2fad8a734689dde9","url":"pwa-192x192.png"},{"revision":"2d21a7ac96627a54bc341e6b04028005","url":"pwa-512x512.png"},{"revision":"8602f487b7950a9d2fad8a734689dde9","url":"pwa-192x192.png"},{"revision":"2d21a7ac96627a54bc341e6b04028005","url":"pwa-512x512.png"},{"revision":"293abc18272f85e5230d8f38e7e1861f","url":"manifest.webmanifest"}]
   // Include the rest of the files in the precache manifest
