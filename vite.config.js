@@ -17,7 +17,6 @@ export default defineConfig({
       strategies: 'injectManifest',
       srcDir: './src/service-worker',
       filename: 'sw.js',
-      includeAssets: ['favicon.svg'],
       injectRegister: false,
       injectManifest: {
         globPatterns: ['**/*.{js,css,html,png,svg}'], //ensure Workbox hashes the files automatically and includes revision information
@@ -28,6 +27,7 @@ export default defineConfig({
         name: 'Salat DZ',
         short_name: 'Salat',
         theme_color: '#000000',
+        background_color: '#000000',
         icons: [
           {
             src: 'pwa-192x192.png', // <== don't add slash, for testing
