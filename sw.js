@@ -2172,7 +2172,7 @@ precacheAndRoute([{"revision":null,"url":"assets/index-CSDcA-d3.js"},{"revision"
 cleanupOutdatedCaches();
 let allowlist;
 registerRoute(new NavigationRoute(
-  createHandlerBoundToURL("/index.html"),
+  createHandlerBoundToURL("/salat-dz/index.html"),
   { allowlist }
 ));
 self.skipWaiting();
