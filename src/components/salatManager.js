@@ -84,7 +84,7 @@ function generateTableRows() {
     }
     //Add next fajr
     const row = document.createElement("tr");
-    row.className = "table-active";
+    row.className = "table-warning";
     const timeLeftCell = document.createElement("td");
     timeLeftCell.textContent = "--:--:--"; // Static value
     row.appendChild(timeLeftCell);
