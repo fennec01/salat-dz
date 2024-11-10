@@ -10,6 +10,7 @@ const tomorrowFajrTime = data[tomorrow][0];
 const prayerNames = ["الفجر", "الظهر", "العصر", "المغرب", "العشاء"];
 const tableBody = document.getElementById("tableBody");
 const downloadPwaButton = document.getElementById("downloadPwaButton");
+const refreshButton = document.getElementById("refreshButton");
 const currentDateElement = document.getElementById("current-date");
 const currentHijriDateElement = document.getElementById("current-hijri-date");
 const noTimePlaceholder = "--:--:--";
@@ -217,6 +218,10 @@ downloadPwaButton.addEventListener("click", () => {
         }
         deferredPrompt = null;
     });
+});
+
+refreshButton.addEventListener("click", () => {
+    location.reload();
 });
 
 function reloadAtMidnight() {
