@@ -74,3 +74,14 @@ html[data-bs-theme="dark"] .corner img {
 html[data-bs-theme="dark"] .corner {
     opacity: 0.10;    
 }
+
+.bg{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url('mosque.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
