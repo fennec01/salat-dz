@@ -2168,7 +2168,7 @@ class NavigationRoute extends Route {
     return false;
   }
 }
-precacheAndRoute([{"revision":null,"url":"assets/index-BXrM3k62.css"},{"revision":null,"url":"assets/index-tOt8w5NI.js"},{"revision":null,"url":"assets/workbox-window.prod.es5-B9K5rw8f.js"},{"revision":"607c6319384673f39d02da5482ad245a","url":"index.html"},{"revision":"95ab9ee3f3acbfd8300f5e3027fadc76","url":"mosque.svg"},{"revision":"8602f487b7950a9d2fad8a734689dde9","url":"pwa-192x192.png"},{"revision":"2d21a7ac96627a54bc341e6b04028005","url":"pwa-512x512.png"},{"revision":"00e652d4bd67b0a839e957721cd909cf","url":"pwa-512x512.svg"},{"revision":"8602f487b7950a9d2fad8a734689dde9","url":"pwa-192x192.png"},{"revision":"2d21a7ac96627a54bc341e6b04028005","url":"pwa-512x512.png"},{"revision":"293abc18272f85e5230d8f38e7e1861f","url":"manifest.webmanifest"}]);
+precacheAndRoute([{"revision":null,"url":"assets/index-BXrM3k62.css"},{"revision":null,"url":"assets/index-tOt8w5NI.js"},{"revision":null,"url":"assets/workbox-window.prod.es5-B9K5rw8f.js"},{"revision":"542f7fc6dc153d9cf121994cfdebf77c","url":"index.html"},{"revision":"95ab9ee3f3acbfd8300f5e3027fadc76","url":"mosque.svg"},{"revision":"8602f487b7950a9d2fad8a734689dde9","url":"pwa-192x192.png"},{"revision":"2d21a7ac96627a54bc341e6b04028005","url":"pwa-512x512.png"},{"revision":"00e652d4bd67b0a839e957721cd909cf","url":"pwa-512x512.svg"},{"revision":"8602f487b7950a9d2fad8a734689dde9","url":"pwa-192x192.png"},{"revision":"2d21a7ac96627a54bc341e6b04028005","url":"pwa-512x512.png"},{"revision":"293abc18272f85e5230d8f38e7e1861f","url":"manifest.webmanifest"}]);
 cleanupOutdatedCaches();
 let allowlist;
 registerRoute(new NavigationRoute(
