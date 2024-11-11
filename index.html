@@ -34,11 +34,11 @@
             <button class="btn btn-primary me-2" type="button" id="downloadPwaButton" hidden>تحميل</button>
             <button type="button" class="btn fw-bold" id="refreshButton">
               ↻
-          </button>
-            <div class="form-check form-switch text-center ms-auto">
-                <input class="form-check-input" type="checkbox" id="amPmToggle">
-                <label class="form-check-label" for="amPmToggle">نظام 12 ساعة</label>
-            </div>
+            </button>
+            <button type="button" class="btn ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">
+              ⚙
+            </button>
+            
 
             <!-- dark mode -->
             <div class="d-flex align-items-center dropdown color-modes border-start ms-3">
@@ -98,6 +98,41 @@
           </tbody>
       </table>
     </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" aria-labelledby="exampleModalScrollableTitle"
+  style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalScrollableTitle">الإعدادات</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+          <div class="mb-3">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="amPmToggle">
+              <label class="form-check-label" for="amPmToggle">نظام 12 ساعة</label>
+            </div>
+  
+          </div>
+
+          <br><br><br>
+          
+          <div class="row mb-3 justify-content-center">
+            <div class="col-sm-10 d-flex justify-content-center">
+              <img src="/qr-code.svg" id="qrCode" style="width: 60%">
+            </div>
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>
 
     <script type="module" src="/src/main.js"></script>
 </body>
