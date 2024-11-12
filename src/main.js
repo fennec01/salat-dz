@@ -7,11 +7,13 @@ import './assets/styles/main.css';
 // Import Bootstrap JS and Popper.js
 import 'bootstrap';
 import { darkMode } from './components/darkMode';
+import { backgroundManager} from './components/backgroundManager';
 import { salatManager } from './components/salatManager';
 import { hourMode } from './components/hourMode';
 
 
 darkMode();
+backgroundManager();
 salatManager();
 hourMode();
 

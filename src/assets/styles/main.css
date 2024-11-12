@@ -79,9 +79,21 @@ html[data-bs-theme="dark"] .corner {
     margin: 0;
     padding: 0;
     height: 100vh;
-    background-image: url('/mosque.svg');
-    background-size: cover;
+    background-size: auto 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+.bg1{
+    background-image: url('/aqsa.svg');
+}
+
+.bg2{
+    background-image: url('/mosque.svg');
+}
+
+.bg3{
+    background-image: url('/mosque-desert.svg');
+}
+
