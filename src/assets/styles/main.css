@@ -75,6 +75,14 @@ html[data-bs-theme="dark"] .corner {
     opacity: 0.10;    
 }
 
+html[data-bs-theme="light"] .carousel-control-next-icon, html[data-bs-theme="light"] .carousel-control-prev-icon, html[data-bs-theme="light"] .carousel-indicators [data-bs-target]{
+    filter: invert(1) grayscale(100)!important;
+}
+
+html[data-bs-theme="dark"] .carousel-control-next-icon, html[data-bs-theme="dark"] .carousel-control-prev-icon, html[data-bs-theme="dark"] .carousel-indicators [data-bs-target] {
+    filter: invert(0) grayscale(100)!important;
+}
+
 .bg{
     margin: 0;
     padding: 0;
