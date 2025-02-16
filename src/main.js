@@ -10,7 +10,7 @@ import { darkMode } from './components/darkMode';
 import { backgroundManager} from './components/backgroundManager';
 import { salatManager } from './components/salatManager';
 import { hourMode } from './components/hourMode';
-
+import { bigFont } from './components/bigFont';
 
 darkMode();
 backgroundManager();

@@ -12,7 +12,7 @@ function manageBigFontClass(isBigFont) {
 }
 
 function addBigFontClass() {
-    table.classList = "big-font";
+    table.classList.add("big-font");
     localStorage.setItem("fontSize", "1"); 
 }
 
