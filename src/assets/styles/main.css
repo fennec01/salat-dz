@@ -105,3 +105,7 @@ html[data-bs-theme="dark"] .carousel-control-next-icon, html[data-bs-theme="dark
     background-image: url('/mosque-desert.svg');
 }
 
+.big-font{
+    font-size: "x-large";
+}
+

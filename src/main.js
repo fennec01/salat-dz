@@ -16,6 +16,7 @@ darkMode();
 backgroundManager();
 salatManager();
 hourMode();
+bigFont();
 
 
 //vite-pwa boilerplate code?
