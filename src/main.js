@@ -11,11 +11,13 @@ import { backgroundManager} from './components/backgroundManager';
 import { salatManager } from './components/salatManager';
 import { hourMode } from './components/hourMode';
 import { bigFont } from './components/bigFont';
+import { gmtAdjuster } from './components/gmtAdjuster';
 
 darkMode();
 backgroundManager();
 salatManager();
 hourMode();
+gmtAdjuster();
 bigFont();
 
 
