@@ -7,13 +7,18 @@ import './assets/styles/main.css';
 // Import Bootstrap JS and Popper.js
 import 'bootstrap';
 import { darkMode } from './components/darkMode';
+import { backgroundManager} from './components/backgroundManager';
 import { salatManager } from './components/salatManager';
 import { hourMode } from './components/hourMode';
-
+import { bigFont } from './components/bigFont';
+import { gmtAdjuster } from './components/gmtAdjuster';
 
 darkMode();
+backgroundManager();
+gmtAdjuster();
 salatManager();
 hourMode();
+bigFont();
 
 
 //vite-pwa boilerplate code?

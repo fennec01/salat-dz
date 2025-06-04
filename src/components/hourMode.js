@@ -6,10 +6,12 @@ const tableBody = document.getElementById("tableBody");
 // Function to update the class based on the toggle state
 function updateClassBasedOnToggle(is12Hour) {
     if (is12Hour) {
-        tableBody.classList = "h-12-system";
+        tableBody.classList.add("h-12-system");
+        tableBody.classList.remove("h-24-system");
         localStorage.setItem("timeFormat", "12h"); // Save to localStorage
     } else {
-        tableBody.classList = "h-24-system";
+        tableBody.classList.add("h-24-system");
+        tableBody.classList.remove("h-12-system");
         localStorage.setItem("timeFormat", "24h"); // Save to localStorage
     }
 }

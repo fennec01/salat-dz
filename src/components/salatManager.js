@@ -9,6 +9,7 @@ const tomorrow =  getCurrentDate(true);
 const tomorrowFajrTime = data[tomorrow][0];
 const prayerNames = ["الفجر", "الظهر", "العصر", "المغرب", "العشاء"];
 const tableBody = document.getElementById("tableBody");
+const gmtToggle = document.getElementById("gmtToggle");
 const downloadPwaButton = document.getElementById("downloadPwaButton");
 const refreshButton = document.getElementById("refreshButton");
 const currentDateElement = document.getElementById("current-date");
@@ -16,9 +17,9 @@ const currentHijriDateElement = document.getElementById("current-hijri-date");
 const noTimePlaceholder = "--:--:--";
 let currentHighlitedPrayerElement = null;
 
-function getCurrentDate(isTommorow) {
+function getCurrentDate(isTomorrow) {
     const today = new Date();
-    if(isTommorow) today.setDate(today.getDate() + 1);
+    if(isTomorrow) today.setDate(today.getDate() + 1);
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, "0"); // Add leading zero
     const day = String(today.getDate()).padStart(2, "0"); // Add leading zero
@@ -42,6 +43,7 @@ function convertTo12Hour(time24) {
 // Function to generate rows dynamically
 function generateTableRows() {
     tableBody.innerHTML = "";
+    currentHighlitedPrayerElement = null;
 
     for (let i = 0; i < todayTimes.length; i++) {
         // Create a new row
@@ -62,13 +64,13 @@ function generateTableRows() {
         // Create a new cell for the time from the array
         const timeCell = document.createElement("td");
         timeCell.classList = "h-24";
-        timeCell.textContent = todayTimes[i];
+        timeCell.textContent = adjustTimeForGMT(todayTimes[i]);
         row.appendChild(timeCell);
 
         // Create a new cell for the time from the array
         const h12FromatCell = document.createElement("td");
         h12FromatCell.classList = "h-12";
-        h12FromatCell.textContent =  convertTo12Hour(todayTimes[i]);
+        h12FromatCell.textContent =  convertTo12Hour(adjustTimeForGMT(todayTimes[i]));
         row.appendChild(h12FromatCell);
 
         // Create a new cell for the prayer name
@@ -176,9 +178,26 @@ function updateCurrentTimeAndDate() {
     currentDateElement.textContent = `${day}/${month}/${year}`;
 
 
-//  Hijri dater DZ
-const formattedHijriDate = new Intl.DateTimeFormat('ar-DZ-u-ca-islamic', {day: 'numeric', month: 'long',weekday: 'long',year : 'numeric'}).format(Date.now());
+//  Hijri date DZ
+const formattedHijriDate = new Intl.DateTimeFormat('ar-DZ-u-ca-islamic-umalqura', {day: 'numeric', month: 'long',weekday: 'long',year : 'numeric'}).format(Date.now());
     currentHijriDateElement.textContent = formattedHijriDate;
+}
+
+
+// Function to adjust time for GMT+2 if toggle is active
+function adjustTimeForGMT(timeString) {
+    const [hours, minutes] = timeString.split(":").map(Number);
+    let adjustedHours = hours;
+
+    // Check if GMT+1 is active
+    if (gmtToggle.checked) {
+        adjustedHours = (hours + 1) % 24; // Add 1 hour, wrap around if >= 24
+    }
+
+    return `${String(adjustedHours).padStart(2, "0")}:${String(minutes).padStart(
+        2,
+        "0"
+    )}`;
 }
 
 // Call the function to generate the rows
@@ -189,6 +208,11 @@ updateCurrentTimeAndDate();
 setInterval(updateCurrentTimeAndDate, 1000);
 
 reloadAtMidnight();
+
+// Event listener to regenerate the table when GMT+2 toggle is activated/deactivated
+gmtToggle.addEventListener("change", ()=>{
+    generateTableRows();
+});
 
 //check pwa is installed
 window.addEventListener("appinstalled", () => {
