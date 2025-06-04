@@ -43,6 +43,7 @@ function convertTo12Hour(time24) {
 // Function to generate rows dynamically
 function generateTableRows() {
     tableBody.innerHTML = "";
+    currentHighlitedPrayerElement = null;
 
     for (let i = 0; i < todayTimes.length; i++) {
         // Create a new row

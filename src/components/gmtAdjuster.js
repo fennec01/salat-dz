@@ -1,26 +1,22 @@
 export function gmtAdjuster() {
 
     const gmtToggle = document.getElementById("gmtToggle");
-//const tableBody = document.getElementById("tableBody");
 
-// Function to update the class based on the toggle state
-function cacheBasedOnToggle(isGmtPlus2) {
-    if (isGmtPlus2) {
-        //tableBody.classList = "h-12-system";
-        localStorage.setItem("isGmtPlus2", "1"); // Save to localStorage
-    } else {
-        //tableBody.classList = "h-24-system";
-        localStorage.setItem("isGmtPlus2", "0"); // Save to localStorage
+    // Save the choice in `localStorage`
+    function cacheBasedOnToggle(isGmtPlus2) {
+        if (isGmtPlus2) {
+            localStorage.setItem("isGmtPlus2", "1");
+        } else {
+            localStorage.setItem("isGmtPlus2", "0");
+        }
     }
-}
 
-// Event listener for the toggle change
-gmtToggle.addEventListener("change", () => {
-    cacheBasedOnToggle(gmtToggle.checked);
-});
+    // Event listener for the toggle change
+    gmtToggle.addEventListener("change", () => {
+        cacheBasedOnToggle(gmtToggle.checked);
+    });
 
-// Check `localStorage` on page load and set the initial state
-window.addEventListener("DOMContentLoaded", () => {
+    // Set the initial state from `localStorage`
     const savedFormat = localStorage.getItem("isGmtPlus2");
     if (savedFormat === "1") {
         gmtToggle.checked = true;
@@ -29,6 +25,5 @@ window.addEventListener("DOMContentLoaded", () => {
         gmtToggle.checked = false;
         cacheBasedOnToggle(false);
     }
-});  
 }
 

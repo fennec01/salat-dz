@@ -15,9 +15,9 @@ import { gmtAdjuster } from './components/gmtAdjuster';
 
 darkMode();
 backgroundManager();
+gmtAdjuster();
 salatManager();
 hourMode();
-gmtAdjuster();
 bigFont();
 
 
