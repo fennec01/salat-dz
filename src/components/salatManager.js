@@ -17,9 +17,9 @@ const currentHijriDateElement = document.getElementById("current-hijri-date");
 const noTimePlaceholder = "--:--:--";
 let currentHighlitedPrayerElement = null;
 
-function getCurrentDate(isTommorow) {
+function getCurrentDate(isTomorrow) {
     const today = new Date();
-    if(isTommorow) today.setDate(today.getDate() + 1);
+    if(isTomorrow) today.setDate(today.getDate() + 1);
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, "0"); // Add leading zero
     const day = String(today.getDate()).padStart(2, "0"); // Add leading zero
@@ -178,7 +178,7 @@ function updateCurrentTimeAndDate() {
     currentDateElement.textContent = `${day}/${month}/${year}`;
 
 
-//  Hijri dater DZ
+//  Hijri date DZ
 const formattedHijriDate = new Intl.DateTimeFormat('ar-DZ-u-ca-islamic-umalqura', {day: 'numeric', month: 'long',weekday: 'long',year : 'numeric'}).format(Date.now());
     currentHijriDateElement.textContent = formattedHijriDate;
 }
