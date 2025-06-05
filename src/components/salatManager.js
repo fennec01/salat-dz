@@ -5,8 +5,6 @@ export function salatManager() {
     
 const today = getCurrentDate();
 const todayTimes = data[today];
-const tomorrow =  getCurrentDate(true);
-const tomorrowFajrTime = data[tomorrow][0];
 const prayerNames = ["الفجر", "الظهر", "العصر", "المغرب", "العشاء"];
 const tableBody = document.getElementById("tableBody");
 const gmtToggle = document.getElementById("gmtToggle");
@@ -84,23 +82,31 @@ function generateTableRows() {
         // Start countdown for this row
         startCountdown(timeCell, timeLeftCell, row);
     }
-    //Add next fajr
+    // Add next fajr
+    const tomorrow = getCurrentDate(true);
+    const tomorrowFajrTime = data[tomorrow][0];
+
     const row = document.createElement("tr");
     row.className = "table-warning";
+
     const timeLeftCell = document.createElement("td");
     timeLeftCell.textContent = "--:--:--"; // Static value
     row.appendChild(timeLeftCell);
+
     const timeCell = document.createElement("td");
     timeCell.classList = "h-24";
-    timeCell.textContent = tomorrowFajrTime;
+    timeCell.textContent = adjustTimeForGMT(tomorrowFajrTime);
     row.appendChild(timeCell);
+
     const h12timeCell = document.createElement("td");
     h12timeCell.classList = "h-12";
-    h12timeCell.textContent = convertTo12Hour(tomorrowFajrTime);
+    h12timeCell.textContent = convertTo12Hour(adjustTimeForGMT(tomorrowFajrTime));
     row.appendChild(h12timeCell);
+
     const prayerCell = document.createElement("td");
     prayerCell.textContent = "فجر الغد";
     row.appendChild(prayerCell);
+
     tableBody.appendChild(row);
 }
 
