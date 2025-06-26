@@ -185,7 +185,7 @@ function updateCurrentTimeAndDate() {
 
 
 //  Hijri date DZ
-const formattedHijriDate = new Intl.DateTimeFormat('ar-DZ-u-ca-islamic-umalqura', {day: 'numeric', month: 'long',weekday: 'long',year : 'numeric'}).format(Date.now());
+const formattedHijriDate = new Intl.DateTimeFormat('ar-DZ-u-ca-islamic-civil', {day: 'numeric', month: 'long',weekday: 'long',year : 'numeric'}).format(Date.now());
     currentHijriDateElement.textContent = formattedHijriDate;
 }
 
